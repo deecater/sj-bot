@@ -41,13 +41,13 @@ def webhook():
 
                     if (message_text.lower() == "help"):
                         send_quick_reply(sender_id, "Happy to help! What do you want to learn more about?", start_dictionary)
-                    elif (message_text.lower() == "hi" or message_text.lower() == "hello" or message_text.lower() == "hey" or message_text.lower() == "hiya"):
+                    elif (message_text.lower() == "hi" or message_text.lower() == "hello" or message_text.lower() == "hey" or message_text.lower() == "hiya" or message_text.lower() == "whats up" or message_text.lower() == "what's up"):
                         send_quick_reply(sender_id, "Hi! My name is Social Justice Bot, or SJ Bot for short. What topic would you like to learn more about?", start_dictionary)
                     elif (message_text.lower() == "feminism"):
                         send_quick_reply(sender_id, "Awesome! Let's get started. What would you like to explore about feminism?", fem_dictionary)
-                    elif (message_text == "What is feminism?"):
-                        send_quick_reply(sender_id, "Feminism is both an intellectual commitment and a political movement that seeks justice for women and the end of sexism in all forms.\nDo you want to learn more?", fem_dictionary)
-                    elif(message_text == "History of feminism"):
+                    elif (message_text.lower() == "What is feminism?"):
+                        send_quick_reply(sender_id, "Feminism is both an intellectual commitment and a political movement that seeks justice for women and the end of sexism in all forms.\n\nDo you want to learn more?", fem_dictionary)
+                    elif(message_text.lower() == "History of feminism"):
                         send_message(sender_id, "history")
                     elif(message_text.lower() == "what feminism isn't"):
                         send_generic_temp(sender_id, not_feminisim)
