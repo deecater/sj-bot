@@ -49,7 +49,7 @@ def webhook():
                     elif ("feminism" in message_text):
                         send_quick_reply(sender_id, "What do you want to know?")
                     else:
-                        send_message(sender_id, "you got it dude")
+                        send_message(sender_id, "catch all response")
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
@@ -66,8 +66,12 @@ def webhook():
 
                     sender_id = messaging_event ["sender"]["id"]
 
-                    if (message_text == "nice"):
-                        send_message(send_id, "Yay!")
+                    if (message_text == "feminism_definition"):
+                        send_message(send_id, "You want to know the definition!")
+                    elif (message_text == "history_feminism"):
+                        send_message(send_id, "You want to know the history!")
+                    else:
+                        send_message(send_id, "Postback failed")
 
 
     return "ok", 200
@@ -114,9 +118,14 @@ def send_quick_reply(recipient_id, message_text):
             "text": message_text,
             "quick_replies": [
             {"content_type":"text",
-            "title":"Red",
-            "payload":"nice"
-            }]
+            "title":"What is feminism?",
+            "payload":"feminism_definition"
+            }
+            {"content_type":"text",
+            "title":"History of feminism.",
+            "payload":"history_feminism"
+            }
+            ]
         }
     })
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
