@@ -68,8 +68,6 @@ def webhook():
 
                     if (message_text == "feminism_definition"):
                         send_message(send_id, "You want to know the definition!")
-                    elif (message_text == "history_feminism"):
-                        send_message(send_id, "You want to know the history!")
 
     return "ok", 200
 
@@ -118,10 +116,6 @@ def send_quick_reply(recipient_id, message_text):
             {"content_type":"text",
             "title":"What is feminism?",
             "payload":"feminism_definition"
-            }
-            {"content_type":"text",
-            "title":"History of feminism.",
-            "payload":"history_feminism"
             }]
         }
     })
