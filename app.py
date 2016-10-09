@@ -119,11 +119,6 @@ def send_quick_reply(recipient_id, message_text):
             "title":"What is feminism?",
             "payload":"definition"
             }]
-            [
-            {"content_type":"text",
-            "title":"History of feminism.",
-            "payload":"history"
-            }]
         }
     })
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
