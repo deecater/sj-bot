@@ -7,7 +7,15 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
-
+fem_dictionary = [
+            {"content_type":"text",
+            "title":"What is feminism?",
+            "payload":"fem_definition"
+            },
+            {"content_type":"text",
+            "title":"History of feminism",
+            "payload":"fem_history"
+            }]
 
 @app.route('/', methods=['GET'])
 def verify():
@@ -47,7 +55,7 @@ def webhook():
                     elif ("okay" in message_text):
                         send_message(sender_id, "affirmative")
                     elif (message_text == "feminism"):
-                        send_quick_reply(sender_id, "What do you want to know?")
+                        send_quick_reply(sender_id, "What do you want to know?", fem_dictionary)
                     elif (message_text == "What is feminism?"):
                         send_message(sender_id, "did we fix it?")
                     else:
@@ -98,7 +106,7 @@ def send_message(recipient_id, message_text):
         log(r.text)
 
 # send a quick reply
-def send_quick_reply(recipient_id, message_text):
+def send_quick_reply(recipient_id, message_text, reply_dictionary):
 
     log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
 
@@ -114,15 +122,7 @@ def send_quick_reply(recipient_id, message_text):
         },
         "message": {
             "text": message_text,
-            "quick_replies": [
-            {"content_type":"text",
-            "title":"What is feminism?",
-            "payload":"fem_definition"
-            },
-            {"content_type":"text",
-            "title":"History of feminism",
-            "payload":"fem_history"
-            }]
+            "quick_replies": reply_dictionary
         }
     })
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
