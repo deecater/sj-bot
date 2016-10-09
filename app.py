@@ -70,8 +70,7 @@ def webhook():
                         send_message(send_id, "You want to know the definition!")
                     elif (message_text == "history_feminism"):
                         send_message(send_id, "You want to know the history!")
-                    else:
-                        send_message(send_id, "Postback failed")
+
 
 
     return "ok", 200
@@ -100,6 +99,7 @@ def send_message(recipient_id, message_text):
         log(r.status_code)
         log(r.text)
 
+# send a quick reply
 def send_quick_reply(recipient_id, message_text):
 
     log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
