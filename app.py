@@ -77,7 +77,7 @@ def webhook():
                     elif (message_text == "What is feminism?"):
                         send_message(sender_id, "did we fix it?")
                     else:
-                        send_message(sender_id, "I'm sorry, I don't understand./nType 'help' if you'd like assistance")
+                        send_message(sender_id, "I'm sorry, I don't understand.\nType 'help' if you'd like assistance")
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
