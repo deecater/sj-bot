@@ -68,7 +68,7 @@ def webhook():
 
                     sender_id = messaging_event ["sender"]["id"]
 
-                    if (message_text == "definition"):
+                    if (message_text == "fem_definition"):
                         send_message(sender_id, "help")
 
     return "ok", 200
@@ -117,7 +117,11 @@ def send_quick_reply(recipient_id, message_text):
             "quick_replies": [
             {"content_type":"text",
             "title":"What is feminism?",
-            "payload":"definition"
+            "payload":"fem_definition"
+            },
+            {"content_type":"text",
+            "title":"History of feminism",
+            "payload":"fem_history"
             }]
         }
     })
