@@ -178,7 +178,7 @@ race_dictionary = [
             },
             {"content_type":"text",
              "title":"What racism isn't",
-             "payload":"not_racism
+             "payload":"not_racism"
             }
 ]
 
