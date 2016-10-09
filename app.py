@@ -41,14 +41,16 @@ def webhook():
 
                     if (message_text.lower() == "help"):
                         send_quick_reply(sender_id, "Happy to help! What do you want to learn more about?", start_dictionary)
-                    elif (message_text.lower() == "hi" or message_text.lower() == "hello" or message_text.lower() == "hey" or message_text.lower() == "hiya" or message_text.lower() == "what's up" or message_text.lower() == "whats up"):
+                    elif (message_text.lower() == "hi" or message_text.lower() == "hello" or message_text.lower() == "hey" or message_text.lower() == "hiya"):
                         send_quick_reply(sender_id, "Hi! My name is Social Justice Bot, or SJ Bot for short. What topic would you like to learn more about?", start_dictionary)
                     elif (message_text.lower() == "feminism"):
                         send_quick_reply(sender_id, "Awesome! Let's get started. What would you like to explore about feminism?", fem_dictionary)
-                    elif (message_text.lower() == "What is feminism?"):
-                        send_quick_reply(sender_id, "Feminism is both an intellectual commitment and a political movement that seeks justice for women and the end of sexism in all forms.\n\nDo you want to learn more?", fem_dictionary)
-                    elif(message_text.lower() == "History of feminism"):
+                    elif (message_text == "What is feminism?"):
+                        send_quick_reply(sender_id, "Feminism is both an intellectual commitment and a political movement that seeks justice for women and the end of sexism in all forms.\nDo you want to learn more?", fem_dictionary)
+                    elif(message_text == "History of feminism"):
                         send_message(sender_id, "history")
+                    elif(message_text.lower() == "what feminism isn't"):
+                        send_generic_temp(sender_id, not_feminisim)
                             
                     else:
                         send_message(sender_id, "I'm sorry, I don't understand.\nType 'help' if you'd like assistance")
@@ -115,6 +117,37 @@ def send_quick_reply(recipient_id, message_text, reply_dictionary):
         "message": {
             "text": message_text,
             "quick_replies": reply_dictionary
+        }
+    })
+    r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
+    if r.status_code != 200:
+        log(r.status_code)
+        log(r.text)
+        
+# send a generic template
+def send_generic_temp(recipient_id, reply_dictionary):
+
+    log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
+
+    params = {
+        "access_token": os.environ["PAGE_ACCESS_TOKEN"]
+    }
+    headers = {
+        "Content-Type": "application/json"
+    }
+    data = json.dumps({
+        "recipient": {
+            "id": recipient_id
+        },
+        "message": {
+            "attachment":{
+                "type":"template",
+                "payload":{
+                    "template_type":"generic",
+                    "elements": reply_dictionary
+                }
+            }
+                
         }
     })
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
@@ -214,3 +247,39 @@ trans_dictionary = [
              "payload":"not_trans"
             }
 ]
+
+not_feminisim = [
+          {
+            "title":"Feminism isn't about hating men",
+            "item_url":"http://deecater.com",
+            "image_url":"http://2w6kxc22rrr9mabqt1mglgait6.wpengine.netdna-cdn.com/wp-content/uploads/2016/02/Man-offended-1024x580.jpg",
+            "subtitle":"Feminism aims to help both men and women, by creating equality of both sexes. ",
+            "buttons":[
+              {
+                "type":"web_url",
+                "url":"http://www.xojane.com/issues/feminism-isnt-about-hating-men",
+                "title":"Learn More"
+              },
+              {
+                "type":"element_share",
+              }              
+            ]
+          }
+          {
+            "title":"Feminism isn't about hating men",
+            "item_url":"http://deecater.com",
+            "image_url":"http://2w6kxc22rrr9mabqt1mglgait6.wpengine.netdna-cdn.com/wp-content/uploads/2016/02/Man-offended-1024x580.jpg",
+            "subtitle":"Feminism aims to help both men and women, by creating equality of both sexes. ",
+            "buttons":[
+              {
+                "type":"web_url",
+                "url":"http://www.xojane.com/issues/feminism-isnt-about-hating-men",
+                "title":"Learn More"
+              },
+              {
+                "type":"element_share",
+              }              
+            ]
+          }
+        ]
+    
