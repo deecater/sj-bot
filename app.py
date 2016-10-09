@@ -49,8 +49,8 @@ def webhook():
                         send_quick_reply(sender_id, "Feminism is both an intellectual commitment and a political movement that seeks justice for women and the end of sexism in all forms.\n\nDo you want to learn more?", fem_dictionary)
                     elif(message_text.lower() == "history of feminism"):
                         send_message(sender_id, "history")
-                    elif(message_text.lower() == "what feminism isn't"):
-                        send_generic_temp(sender_id, not_feminisim)
+                    elif (message_text.lower() == "what feminism isn't"):
+                        send_generic_temp(sender_id, "not feminism", not_fem_dictionary)
                     elif (message_text.lower() == "gay rights"):
                         send_quick_reply(sender_id, "Awesome! Let's get started. What would you like to explore about gay rights?", gay_dictionary)
                     elif (message_text.lower() == "what are gay rights?"):
@@ -133,8 +133,8 @@ def send_quick_reply(recipient_id, message_text, reply_dictionary):
         log(r.status_code)
         log(r.text)
         
-# send a generic template
-def send_generic_temp(recipient_id, reply_dictionary):
+# send a generic response
+def send_generic_temp(recipient_id, message_text, reply_dictionary):
 
     log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
 
@@ -149,14 +149,13 @@ def send_generic_temp(recipient_id, reply_dictionary):
             "id": recipient_id
         },
         "message": {
-            "attachment":{
-                "type":"template",
-                "payload":{
-                    "template_type":"generic",
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type" : "generic",
                     "elements": reply_dictionary
                 }
             }
-                
         }
     })
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
@@ -257,38 +256,21 @@ trans_dictionary = [
             }
 ]
 
-not_feminisim = [
-          {
+not_fem_dictionary = [
+{
             "title":"Feminism isn't about hating men",
-            "item_url":"http://deecater.com",
+            "item_url":"http://everydayfeminism.com",
             "image_url":"http://2w6kxc22rrr9mabqt1mglgait6.wpengine.netdna-cdn.com/wp-content/uploads/2016/02/Man-offended-1024x580.jpg",
-            "subtitle":"Feminism aims to help both men and women, by creating equality of both sexes. ",
+            "subtitle":"Feminism aims to help both men and women, by creating equality of both sexes.",
             "buttons":[
               {
                 "type":"web_url",
-                "url":"http://www.xojane.com/issues/feminism-isnt-about-hating-men",
+                "url":"http://everydayfeminism.com/2015/06/feminism-isnt-about-hating-men/",
                 "title":"Learn More"
               },
               {
-                "type":"element_share",
-              }              
+                "type":"element_share"
+              }
             ]
           }
-          {
-            "title":"Feminism isn't about hating men",
-            "item_url":"http://deecater.com",
-            "image_url":"http://2w6kxc22rrr9mabqt1mglgait6.wpengine.netdna-cdn.com/wp-content/uploads/2016/02/Man-offended-1024x580.jpg",
-            "subtitle":"Feminism aims to help both men and women, by creating equality of both sexes. ",
-            "buttons":[
-              {
-                "type":"web_url",
-                "url":"http://www.xojane.com/issues/feminism-isnt-about-hating-men",
-                "title":"Learn More"
-              },
-              {
-                "type":"element_share",
-              }              
-            ]
-          }
-        ]
-    
+]
