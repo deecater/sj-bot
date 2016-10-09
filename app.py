@@ -46,7 +46,7 @@ def webhook():
                         send_message(sender_id, "hi, there!")
                     elif ("okay" in message_text):
                         send_message(sender_id, "affirmative")
-                    elif (message_text == "feminsim"):
+                    elif (message_text == "feminism"):
                         send_quick_reply(sender_id, "What do you want to know?")
                     elif (message_text == "What is feminism?"):
                         send_message(sender_id, "did we fix it?")
