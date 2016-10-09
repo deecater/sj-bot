@@ -8,6 +8,7 @@ from flask import Flask, request
 app = Flask(__name__)
 
 
+
 @app.route('/', methods=['GET'])
 def verify():
     # when the endpoint is registered as a webhook, it must echo back
@@ -46,7 +47,7 @@ def webhook():
                     elif ("okay" in message_text):
                         send_message(sender_id, "affirmative")
                     elif ("feminism" in message_text):
-                        send_message(sender_id, "What do you want to know?")
+                        send_quick_reply(sender_id, "What do you want to know?")
                     else:
                         send_message(sender_id, "you got it dude")
 
@@ -65,13 +66,13 @@ def webhook():
 
                     sender_id = messaging_event ["sender"]["id"]
 
-                    if (message_text == "help"):
+                    if (message_text == "nice"):
                         send_message(send_id, "Yay!")
 
 
     return "ok", 200
 
-
+# send a text message function
 def send_message(recipient_id, message_text):
 
     log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
@@ -88,6 +89,34 @@ def send_message(recipient_id, message_text):
         },
         "message": {
             "text": message_text
+        }
+    })
+    r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
+    if r.status_code != 200:
+        log(r.status_code)
+        log(r.text)
+
+def send_quick_reply(recipient_id, message_text):
+
+    log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
+
+    params = {
+        "access_token": os.environ["PAGE_ACCESS_TOKEN"]
+    }
+    headers = {
+        "Content-Type": "application/json"
+    }
+    data = json.dumps({
+        "recipient": {
+            "id": recipient_id
+        },
+        "message": {
+            "text": message_text,
+            "quick_replies": [
+            {"content_type":"text",
+            "title":"Red",
+            "payload":"nice"
+            }]
         }
     })
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
