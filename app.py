@@ -7,6 +7,7 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
+# quick reply dictionaries
 fem_dictionary = [
             {"content_type":"text",
             "title":"What is feminism?",
@@ -16,6 +17,25 @@ fem_dictionary = [
             "title":"History of feminism",
             "payload":"fem_history"
             }]
+
+start_dictionary = [
+            {"content_type":"text",
+            "title":"Feminism",
+            "payload":"start_fem"
+            },
+            {"content_type":"text",
+            "title":"Racism",
+            "payload":"start_race"
+            },
+            {"content_type":"text",
+            "title":"Gay Rights",
+            "payload":"start_gay"
+            },
+            {"content_type":"text",
+            "title":"Trans Rights",
+            "payload":"start_trans"
+            }]
+
 
 @app.route('/', methods=['GET'])
 def verify():
@@ -59,7 +79,7 @@ def webhook():
                     elif (message_text == "What is feminism?"):
                         send_message(sender_id, "did we fix it?")
                     else:
-                        send_message(sender_id, "catch all response")
+                        send_message(sender_id, "Hi! My name is Social Justice Bot, or SJ Bot for short. What would you like to learn more about?")
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
