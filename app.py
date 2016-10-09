@@ -8,7 +8,11 @@ from flask import Flask, request
 app = Flask(__name__)
 
 #import quick reply dictionaries
+<<<<<<< HEAD
 from quickReplyDicts import *
+=======
+import quickReplyDicts
+>>>>>>> f6e339385e053291c701b14464998a2879317a73
 
 # quick reply dictionaries
 #fem_dictionary = [
@@ -76,11 +80,15 @@ def webhook():
                     elif (message_text.lower() == "hi" or message_text.lower() == "hello" or message_text.lower() == "hey" or message_text.lower() == "hiya"):
                         send_quick_reply(sender_id, "Hi! My name is Social Justice Bot, or SJ Bot for short. What topic would you like to learn more about?", start_dictionary)
                     elif (message_text.lower() == "feminism"):
-                        send_quick_reply(sender_id, "Awesome! Let's get started. What would you like to explore about feminism?", fem_dictionary)
+                        send_quick_reply(sender_id, "Awesome! Let's get started. What would you like to explore about feminism?", quickReplyDicts.fem_dictionary)
                     elif (message_text == "What is feminism?"):
                         send_message(sender_id, "did we fix it?")
                     else:
+<<<<<<< HEAD
                         send_message(sender_id, "I'm sorry, I don't understand.\nType 'help' if you'd like assistance")
+=======
+                        send_quick_reply(sender_id, "Hi! My name is Social Justice Bot, or SJ Bot for short. What topic would you like to learn more about?", quickReplyDicts.start_dictionary)
+>>>>>>> f6e339385e053291c701b14464998a2879317a73
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass

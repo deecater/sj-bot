@@ -51,7 +51,11 @@ race_dictionary = [
 ]
 
 #gay rights dictionary
+<<<<<<< HEAD
 fem_dictionary = [
+=======
+gay_dictionary = [
+>>>>>>> f6e339385e053291c701b14464998a2879317a73
             {"content_type":"text",
             "title":"What are gay rights",
             "payload":"gay_definition"
@@ -67,7 +71,11 @@ fem_dictionary = [
 ]
 
 #trans rights dictionary
+<<<<<<< HEAD
 fem_dictionary = [
+=======
+trans_dictionary = [
+>>>>>>> f6e339385e053291c701b14464998a2879317a73
             {"content_type":"text",
             "title":"What is trans?",
             "payload":"trans_definition"
