@@ -118,6 +118,10 @@ def send_quick_reply(recipient_id, message_text):
             {"content_type":"text",
             "title":"What is feminism?",
             "payload":"definition"
+            }
+            {"content_type":"text",
+            "title":"History of feminism.",
+            "payload":"history"
             }]
         }
     })
