@@ -8,11 +8,7 @@ from flask import Flask, request
 app = Flask(__name__)
 
 #import quick reply dictionaries
-<<<<<<< HEAD
 from quickReplyDicts import *
-=======
-import quickReplyDicts
->>>>>>> f6e339385e053291c701b14464998a2879317a73
 
 # quick reply dictionaries
 #fem_dictionary = [

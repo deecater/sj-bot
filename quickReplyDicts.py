@@ -46,16 +46,13 @@ race_dictionary = [
             },
             {"content_type":"text",
              "title":"What racism isn't",
-             "payload":"not_racism
+             "payload":"not_racism"
             }
 ]
 
 #gay rights dictionary
-<<<<<<< HEAD
-fem_dictionary = [
-=======
+
 gay_dictionary = [
->>>>>>> f6e339385e053291c701b14464998a2879317a73
             {"content_type":"text",
             "title":"What are gay rights",
             "payload":"gay_definition"
@@ -71,11 +68,7 @@ gay_dictionary = [
 ]
 
 #trans rights dictionary
-<<<<<<< HEAD
-fem_dictionary = [
-=======
 trans_dictionary = [
->>>>>>> f6e339385e053291c701b14464998a2879317a73
             {"content_type":"text",
             "title":"What is trans?",
             "payload":"trans_definition"
