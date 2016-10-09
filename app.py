@@ -46,7 +46,7 @@ def webhook():
                     elif (message_text.lower() == "feminism"):
                         send_quick_reply(sender_id, "Awesome! Let's get started. What would you like to explore about feminism?", fem_dictionary)
                     elif (message_text == "What is feminism?"):
-                        send_quick_reply(sender_id, "Feminism is both an intellectual commitment and a political movement that seeks justice for women and the end of sexism in all forms.\nDo you want to learn more?", fem_dictionary)
+                        send_quick_reply(sender_id, "Feminism is both an intellectual commitment and a political movement that seeks justice for women and the end of sexism in all forms.\n\nDo you want to learn more?", fem_dictionary)
                     elif(message_text == "History of feminism"):
                         send_message(sender_id, "history")
                             
