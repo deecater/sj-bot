@@ -67,7 +67,7 @@ def webhook():
                     sender_id = messaging_event ["sender"]["id"]
 
                     if (message_text == "definition"):
-                        send_message(sender_id, "You want to know the definition!")
+                        send_message(sender_id, "help")
 
     return "ok", 200
 
