@@ -41,6 +41,8 @@ def webhook():
 
                     if (message_text == "help"):
                         send_message(sender_id, "here's some help")
+                    elif (message_text == "hi"):
+                        send_message(sender_id, "hi, there!")
                     else:
                         send_message(sender_id, "you got it dude")
 
