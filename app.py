@@ -75,11 +75,11 @@ def webhook():
                     elif ("okay" in message_text):
                         send_message(sender_id, "affirmative")
                     elif (message_text.lower() == "feminism"):
-                        send_quick_reply(sender_id, "What do you want to know?", fem_dictionary)
+                        send_quick_reply(sender_id, "Awesome! Let's get started. What would you like to explore about feminism?", fem_dictionary)
                     elif (message_text == "What is feminism?"):
                         send_message(sender_id, "did we fix it?")
                     else:
-                        send_quick_reply(sender_id, "Hi! My name is Social Justice Bot, or SJ Bot for short. What would you like to learn more about?", start_dictionary)
+                        send_quick_reply(sender_id, "Hi! My name is Social Justice Bot, or SJ Bot for short. What topic would you like to learn more about?", start_dictionary)
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
